@@ -70,23 +70,19 @@ public class LFSR {
     /*
     * Realiza el proceso de LFSR
     */
-    public void makeProcess() {
-        
+    public void makeProcess() {  
         /* Si no hay ningún tap, no realiza la ejecución */
         if ( this.taps.size() == 0 ) {
             return;
         }
-        
         /*
         * Variables auxiliares para guardar nuestro punto de inicio
         * y asignar el siguiente paso al que hemos llegado.
         */
         int auxSeed = new Integer(this.intialSeed);
         String auxBinarySeed = this.initialBinarySeed;
-        
         /* Inicializamos nuestros steps */
         this.stepList = new ArrayList<Step>();
-        
         /* Obtenemos el tamaño/numero de bits de nuestra semilla */
         int binarySeedLength = auxBinarySeed.length();
         /*
@@ -96,10 +92,8 @@ public class LFSR {
         * del xor de los taps. (Recordemos que el xor es asociativo)
         */
         List<Integer> realTaps = new ArrayList<Integer>();
-        boolean s = false;
-        
-        int tapsXor = -1;
-        
+        boolean s = false;        
+        int tapsXor = -1;    
         /*
         * Para cada uno de los taps
         */
@@ -134,14 +128,12 @@ public class LFSR {
                 */
                 tapsXor = tapsXor ^ res;
             }
-        }
-        
+        }  
         /*
         * Esta parte se ejecutará mientras
         * no salga una nueva semilla o random repetido.
         */
         while( true ) {
-            
             int a = tapsXor;
             /* 
             * Obtenemos el cáracter que va a salir de la semilla 
@@ -166,7 +158,6 @@ public class LFSR {
             /* Reasignamos nuestras variables para la siguiente iteración */
             auxBinarySeed = newBinaryString;
             auxSeed = newSeed;
-           
             /* 
             * Si la lista de pasos no contiene nuestro paso la agregamos 
             * caso contrario detenemos la ejecución.
@@ -176,8 +167,7 @@ public class LFSR {
             } else {
                 break;
             }
-        }
-           
+        }   
     }
 
     /**
