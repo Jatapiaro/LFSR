@@ -16,6 +16,7 @@ import java.util.List;
  * Archivos relacionados: Step.java
  * Ejecucion: Acceder a https://seguridad-informatica.herokuapp.com/
  *  y seleccionar el proyecto LFSR
+ * Plataforma: Navegadores Chrome, Safari, Firefox e Internet Explorer
  * Descripción: Programa encargado de simular el comportamiento de un LFSR,
  *  guardando así todos los pasos hasta que se repita la semilla.
  * 
