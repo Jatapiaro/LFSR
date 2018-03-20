@@ -3,17 +3,42 @@ package com.lfsr;
 import java.util.List;
 
 /**
- * This class is in change to keep
- * a record of how the lfsr was evolving
- * during the iterations
- * @author jacobotapia
+ *
+ * Proyecto 1 - Seguridad Informática
+ * Simulador de LFSR
+ * Autor: Jacobo Misael Tapia de la Rosa
+ * Matricula: 1336590   Carrera: ITC-11
+ * Correo Electronico: A01336590@itesm.mx
+ * Fecha de creacion: 18-mar-2018
+ * Fecha última modificiacion: 20-mae-2018
+ * Nombre Archivo: Step.java
+ * Descripción: Clase para guardar los pasos de la simulación que se ha ido ejecutando.
+ * 
+ * @author jatapiaro
  */
 public class Step {
     
+    /*
+    * @param int seed, semilla con la que se genera newSeed
+    * @param int newSeed, nueva semilla generada tras el proceso de seed
+    * @param outBit, bit que se removio de la semilla inicial
+    * @param String binarySeed, valor de seed en binario
+    * @param String newBinarySeed, valor de newSeed en binario
+    * @param List<Integer> taps, las posiciones de tap usadas para el proceso
+    */
     private int seed, newSeed, outBit;
     private String binarySeed, newBinarySeed;
     private List<Integer> taps;
     
+    /*
+    * Constructor
+    * @param int seed, semilla con la que se genera newSeed
+    * @param int newSeed, nueva semilla generada tras el proceso de seed
+    * @param outBit, bit que se removio de la semilla inicial
+    * @param String binarySeed, valor de seed en binario
+    * @param String newBinarySeed, valor de newSeed en binario
+    * @param List<Integer> taps, las posiciones de tap usadas para el proceso
+    */
     public Step(int seed, String binarySeed, int outBit, int newSeed, String newBinarySeed,
             List<Integer> taps) {
         this.seed = seed;
@@ -111,6 +136,10 @@ public class Step {
     
     @Override
     public boolean equals(Object o) {
+        /*
+        * Si el valor de la semilla, es igual al de otra semilla
+        * entonces ambos objetos son iguales.
+        */
         return ((Step)o).seed == this.seed;
     }
     
