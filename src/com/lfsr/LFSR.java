@@ -45,6 +45,11 @@ public class LFSR {
         this.tap = tap;
     }
     
+    /*
+    * Make all the process
+    * when a cycle is completed, I mean
+    * when we get a repeated random we stop the process
+    */
     public void makeProcess() {
         
         int auxSeed = new Integer(this.intialSeed);

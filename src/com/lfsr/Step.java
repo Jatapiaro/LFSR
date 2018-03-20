@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lfsr;
 
 /**
- *
+ * This class is in change to keep
+ * a record of how the lfsr was evolving
+ * during the iterations
  * @author jacobotapia
  */
 public class Step {
