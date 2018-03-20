@@ -18,13 +18,13 @@ public class LFSR {
     public LFSR( String initialBinarySeed ) {
         this.initialBinarySeed = initialBinarySeed;
         this.intialSeed = Integer.parseInt(initialBinarySeed, 2);
-        this.tap = 0;
+        this.tap = 1;
     }
     
     public LFSR ( int initialSeed ) {
         this.intialSeed = initialSeed;
         this.initialBinarySeed = Integer.toBinaryString(this.intialSeed);
-        this.tap = 0;
+        this.tap = 1;
     }
     
     public LFSR( String initialBinarySeed, int tap ) {
@@ -48,7 +48,6 @@ public class LFSR {
         int binarySeedLength = auxBinarySeed.length();
         int realTap = (binarySeedLength - tap) - 1;
         
-        
         while( true ) {
             
             int a = Character.getNumericValue(auxBinarySeed.charAt(realTap));
@@ -58,7 +57,6 @@ public class LFSR {
             int newSeed = Integer.parseInt(newBinaryString, 2);
             
             Step s = new Step(auxSeed, auxBinarySeed, b, newSeed, newBinaryString, a);
-            
             auxBinarySeed = newBinaryString;
             auxSeed = newSeed;
            
@@ -83,6 +81,8 @@ public class LFSR {
      */
     public void setIntialSeed(int intialSeed) {
         this.intialSeed = intialSeed;
+        this.initialBinarySeed = Integer.toBinaryString(this.intialSeed);
+        this.tap = 1;
     }
 
     /**
@@ -125,6 +125,8 @@ public class LFSR {
      */
     public void setInitialBinarySeed(String initialBinarySeed) {
         this.initialBinarySeed = initialBinarySeed;
+        this.intialSeed = Integer.parseInt(initialBinarySeed, 2);
+        this.tap = 1;
     }
 
     /**
