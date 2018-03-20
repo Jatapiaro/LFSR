@@ -24,6 +24,9 @@ public class LFSR {
     public LFSR ( int initialSeed ) {
         this.intialSeed = initialSeed;
         this.initialBinarySeed = Integer.toBinaryString(this.intialSeed);
+        while( this.initialBinarySeed.length() != 4 ) {
+            this.initialBinarySeed = "0" + this.initialBinarySeed;
+        } 
         this.tap = 1;
     }
     
@@ -36,6 +39,9 @@ public class LFSR {
     public LFSR ( int initialSeed, int tap ) {
         this.intialSeed = initialSeed;
         this.initialBinarySeed = Integer.toBinaryString(this.intialSeed);
+        while( this.initialBinarySeed.length() != 4 ) {
+            this.initialBinarySeed = "0" + this.initialBinarySeed;
+        } 
         this.tap = tap;
     }
     
@@ -82,6 +88,9 @@ public class LFSR {
     public void setIntialSeed(int intialSeed) {
         this.intialSeed = intialSeed;
         this.initialBinarySeed = Integer.toBinaryString(this.intialSeed);
+        while( this.initialBinarySeed.length() != 4 ) {
+            this.initialBinarySeed = "0" + this.initialBinarySeed;
+        } 
         this.tap = 1;
     }
 
