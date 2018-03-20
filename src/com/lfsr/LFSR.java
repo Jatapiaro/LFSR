@@ -9,9 +9,9 @@ import java.util.List;
  */
 public class LFSR {
     
-    private int intialSeed, newSeed;
+    private int intialSeed;
     private int tap;
-    private String initialBinarySeed, newBinarySeed;
+    private String initialBinarySeed;
     private List<Step> stepList;
     
     
@@ -100,20 +100,6 @@ public class LFSR {
     }
 
     /**
-     * @return the newSeed
-     */
-    public int getNewSeed() {
-        return newSeed;
-    }
-
-    /**
-     * @param newSeed the newSeed to set
-     */
-    public void setNewSeed(int newSeed) {
-        this.newSeed = newSeed;
-    }
-
-    /**
      * @return the tap
      */
     public int getTap() {
@@ -141,20 +127,6 @@ public class LFSR {
         this.initialBinarySeed = initialBinarySeed;
         this.intialSeed = Integer.parseInt(initialBinarySeed, 2);
         this.tap = 1;
-    }
-
-    /**
-     * @return the newBinarySeed
-     */
-    public String getNewBinarySeed() {
-        return newBinarySeed;
-    }
-
-    /**
-     * @param newBinarySeed the newBinarySeed to set
-     */
-    public void setNewBinarySeed(String newBinarySeed) {
-        this.newBinarySeed = newBinarySeed;
     }
 
     /**
