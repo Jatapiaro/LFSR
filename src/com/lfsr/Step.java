@@ -1,5 +1,7 @@
 package com.lfsr;
 
+import java.util.List;
+
 /**
  * This class is in change to keep
  * a record of how the lfsr was evolving
@@ -8,18 +10,19 @@ package com.lfsr;
  */
 public class Step {
     
-    private int seed, newSeed, outBit, tap;
+    private int seed, newSeed, outBit;
     private String binarySeed, newBinarySeed;
+    private List<Integer> taps;
     
     public Step(int seed, String binarySeed, int outBit, int newSeed, String newBinarySeed,
-            int tap) {
+            List<Integer> taps) {
         this.seed = seed;
         this.binarySeed = binarySeed;
         this.newSeed = newSeed;
         this.outBit = outBit;
         this.newSeed = newSeed;
         this.newBinarySeed = newBinarySeed;
-        this.tap = tap;
+        this.taps = taps;
     }
 
     /**
@@ -48,6 +51,20 @@ public class Step {
      */
     public void setNewSeed(int newSeed) {
         this.newSeed = newSeed;
+    }
+
+    /**
+     * @return the taps
+     */
+    public List<Integer> getTaps() {
+        return taps;
+    }
+
+    /**
+     * @param taps the taps to set
+     */
+    public void setTaps(List<Integer> taps) {
+        this.taps = taps;
     }
 
     /**
@@ -102,7 +119,15 @@ public class Step {
         StringBuilder sb = new StringBuilder();
         sb.append(this.binarySeed);
         sb.append(": ");
-        sb.append(this.outBit + "^" + this.tap);
+        sb.append(this.outBit + "^");
+        int counter = 0;
+        for( int i : this.taps ) {
+            sb.append(i);
+            if ( counter < this.taps.size()-1 ) {
+                sb.append("^");
+            }
+            counter++;
+        }
         sb.append(" --> ");
         sb.append(this.newBinarySeed);
         return sb.toString();
