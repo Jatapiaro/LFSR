@@ -86,55 +86,56 @@ public class LFSR {
         this.stepList = new ArrayList<Step>();
         /* Obtenemos el tamaño/numero de bits de nuestra semilla */
         int binarySeedLength = auxBinarySeed.length();
-        /*
-        * Iniciaizamos los 'realTaps' y una variable que indica si será nuestra 
-        *  primer iteración.
-        * También inicializamos la variable donde se guardara el resultado 
-        * del xor de los taps. (Recordemos que el xor es asociativo)
-        */
-        List<Integer> realTaps = new ArrayList<Integer>();
-        boolean s = false;        
-        int tapsXor = -1;    
-        /*
-        * Para cada uno de los taps
-        */
-        for ( int t : taps ) {
-            /*
-            * RealTap, ejemplo, si tenemos [0][1][0][1]
-            * y escogemos el tap 1, nos quedariamos con el segundo [0]
-            * pues contamos de derecha a izquierda ls posiciones es decir
-            * [3][2][1][0]
-            * Ahora el real tap es igual al tamaño de la semilla, menos el tap 't'
-            * en este caso t = 1, tamanoSemilla = 4 (4-1) = 3
-            * El -1 a ese resultado es para que no se salga de la dimensión del arreglo
-            * por lo tanto 3-1 = 2. Como el string en código lo leemos de izquierda 
-            * a derecha tendriamos binaryString.charAt(2) = [0]
-            */
-            int realTap = (binarySeedLength - t) - 1;
-            //Obtenemos el valor númerico del caracter obtenido
-            int res = Character.getNumericValue(auxBinarySeed.charAt(realTap));
-            //Lo agregamos a la lista de taps
-            realTaps.add(res);
-            if ( s == false ) {
-                /*
-                * Si es la primera vez que pasamos por aqui
-                * solo asigna a tapsXor el primer tap.
-                */
-                s = true;
-                tapsXor = res;
-            } else {
-                /*
-                * Si ya hemos pasado por aquí, a tapsXor aplicale un xor 
-                * con el siguiente tap
-                */
-                tapsXor = tapsXor ^ res;
-            }
-        }  
+
         /*
         * Esta parte se ejecutará mientras
         * no salga una nueva semilla o random repetido.
         */
         while( true ) {
+            /*
+            * Iniciaizamos los 'realTaps' y una variable que indica si será nuestra 
+            *  primer iteración.
+            * También inicializamos la variable donde se guardara el resultado 
+            * del xor de los taps. (Recordemos que el xor es asociativo)
+            */
+            List<Integer> realTaps = new ArrayList<Integer>();
+            boolean s = false;        
+            int tapsXor = -1;    
+            /*
+            * Para cada uno de los taps
+            */
+            for ( int t : taps ) {
+                /*
+                * RealTap, ejemplo, si tenemos [0][1][0][1]
+                * y escogemos el tap 1, nos quedariamos con el segundo [0]
+                * pues contamos de derecha a izquierda ls posiciones es decir
+                * [3][2][1][0]
+                * Ahora el real tap es igual al tamaño de la semilla, menos el tap 't'
+                * en este caso t = 1, tamanoSemilla = 4 (4-1) = 3
+                * El -1 a ese resultado es para que no se salga de la dimensión del arreglo
+                * por lo tanto 3-1 = 2. Como el string en código lo leemos de izquierda 
+                * a derecha tendriamos binaryString.charAt(2) = [0]
+                */
+                int realTap = (binarySeedLength - t) - 1;
+                //Obtenemos el valor númerico del caracter obtenido
+                int res = Character.getNumericValue(auxBinarySeed.charAt(realTap));
+                //Lo agregamos a la lista de taps
+                realTaps.add(res);
+                if ( s == false ) {
+                    /*
+                    * Si es la primera vez que pasamos por aqui
+                    * solo asigna a tapsXor el primer tap.
+                    */
+                    s = true;
+                    tapsXor = res;
+                } else {
+                    /*
+                    * Si ya hemos pasado por aquí, a tapsXor aplicale un xor 
+                    * con el siguiente tap
+                    */
+                    tapsXor = tapsXor ^ res;
+                }
+            }  
             int a = tapsXor;
             /* 
             * Obtenemos el cáracter que va a salir de la semilla 
